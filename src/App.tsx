@@ -1,29 +1,19 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './index.css';
+import Sidebar from './components/sidebar/Sidebar';
+import MainContent from './components/mainContent/MainContent';
 
+const SIDEBAR_WIDTH = 30;
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="w-full h-full bg-green-100">
-      <div className="flex flex-row gap-4 bg-red-100">
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="flex h-screen w-screen bg-gray-50">
+      {/* Main Content - 70% width */}
+      <div style={{ width: `${100 - SIDEBAR_WIDTH}%` }} className="bg-white">
+        <MainContent />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      {/* Sidebar - 30% width */}
+      <div style={{ width: `${SIDEBAR_WIDTH}%` }} className="bg-gray-100 border-l border-gray-200">
+        <Sidebar />
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </div>
   );
 }
